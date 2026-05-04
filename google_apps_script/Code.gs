@@ -12,7 +12,6 @@ const HEADERS = [
   'page_index',
   'task_order',
   'client_timestamp',
-  'page_url',
   'user_agent'
 ];
 

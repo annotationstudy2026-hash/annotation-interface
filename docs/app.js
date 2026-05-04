@@ -258,7 +258,6 @@ function buildPayload(payload) {
     study_id: window.APP_CONFIG.studyId,
     annotator_id: state.annotatorId,
     client_timestamp: new Date().toISOString(),
-    page_url: window.location.href,
     user_agent: navigator.userAgent,
     ...payload,
   };
@@ -428,7 +427,6 @@ function downloadLocalCSV() {
       "page_index",
       "task_order",
       "client_timestamp",
-      "page_url",
     ],
   ];
   const prefix = `${storagePrefix()}:`;
@@ -446,7 +444,6 @@ function downloadLocalCSV() {
         payload.page_index || "",
         payload.task_order || "",
         payload.client_timestamp || "",
-        payload.page_url || "",
       ]);
     } catch {
       // Ignore malformed entries.
