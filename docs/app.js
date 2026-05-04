@@ -121,8 +121,10 @@ function currentPage() {
 function render() {
   const page = currentPage();
   const pageCount = state.pages.length;
-  const remote = window.APP_CONFIG.webAppUrl ? "Google Sheet + localStorage" : "localStorage만";
-  els.statusText.textContent = `${state.annotatorId}: 저장 방식 ${remote}`;
+  const remote = window.APP_CONFIG.webAppUrl
+    ? "선택 즉시 localStorage 저장, 페이지 이동 때 Google Sheet 저장"
+    : "localStorage만 저장";
+  els.statusText.textContent = `${state.annotatorId}: ${remote}`;
   els.pageLabel.textContent = `Page ${state.pageIndex + 1} / ${pageCount}`;
   els.themeLabel.textContent = page.theme ? `Theme: ${page.theme}` : "";
   els.prevPage.disabled = state.pageIndex <= 0;
@@ -224,9 +226,9 @@ function renderComment(task) {
   const textarea = document.createElement("textarea");
   textarea.placeholder = "comment";
   textarea.value = state.comments.get(task.item_id) || "";
-  textarea.addEventListener("change", async () => {
+  textarea.addEventListener("change", () => {
     state.comments.set(task.item_id, textarea.value);
-    await savePayload({
+    saveLocalPayload({
       item_id: task.item_id,
       question_type: "comment",
       answer: textarea.value,
@@ -240,7 +242,7 @@ function renderComment(task) {
 
 async function saveAnswer(task, answerField, value) {
   setAnswer(task.item_id, answerField, value);
-  await savePayload({
+  saveLocalPayload({
     item_id: task.item_id,
     question_type: questionTypes[answerField],
     answer_field: answerField,
@@ -251,8 +253,8 @@ async function saveAnswer(task, answerField, value) {
   render();
 }
 
-async function savePayload(payload) {
-  const fullPayload = {
+function buildPayload(payload) {
+  return {
     study_id: window.APP_CONFIG.studyId,
     annotator_id: state.annotatorId,
     client_timestamp: new Date().toISOString(),
@@ -260,24 +262,104 @@ async function savePayload(payload) {
     user_agent: navigator.userAgent,
     ...payload,
   };
+}
+
+function saveLocalPayload(payload) {
+  const fullPayload = buildPayload(payload);
 
   const key =
     fullPayload.question_type === "comment"
       ? commentStorageKey(fullPayload.item_id)
       : storageKey(fullPayload.item_id, fullPayload.answer_field);
   localStorage.setItem(key, JSON.stringify(fullPayload));
+}
 
+function buildPageRecords(page) {
+  const records = [];
+  for (const task of page.tasks) {
+    for (const answerField of ["question_1_answer", "question_2_answer"]) {
+      records.push(
+        buildPayload({
+          item_id: task.item_id,
+          question_type: questionTypes[answerField],
+          answer_field: answerField,
+          answer: getAnswer(task.item_id, answerField),
+          page_index: state.pageIndex + 1,
+          task_order: task.task_order,
+        }),
+      );
+    }
+    const comment = state.comments.get(task.item_id);
+    if (comment) {
+      records.push(
+        buildPayload({
+          item_id: task.item_id,
+          question_type: "comment",
+          answer_field: "comment",
+          answer: comment,
+          page_index: state.pageIndex + 1,
+          task_order: task.task_order,
+        }),
+      );
+    }
+  }
+  return records;
+}
+
+async function postRecords(records) {
   if (!window.APP_CONFIG.webAppUrl) return;
+  const batchId = `${window.APP_CONFIG.studyId}:${state.annotatorId}:page_${state.pageIndex + 1}:${Date.now()}`;
   try {
     await fetch(window.APP_CONFIG.webAppUrl, {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(fullPayload),
+      body: JSON.stringify({
+        batch_id: batchId,
+        records: records.map((record) => ({
+          ...record,
+          batch_id: batchId,
+          record_key: `${record.study_id}:${record.annotator_id}:${record.item_id}:${record.question_type}`,
+        })),
+      }),
     });
   } catch (error) {
     console.warn("Google Sheet sync failed; localStorage backup remains.", error);
   }
+}
+
+function firstUnansweredOnPage(page) {
+  for (const task of page.tasks) {
+    for (const answerField of ["question_1_answer", "question_2_answer"]) {
+      if (!getAnswer(task.item_id, answerField)) {
+        return { itemId: task.item_id, answerField };
+      }
+    }
+  }
+  return null;
+}
+
+async function syncCurrentPageBeforeNavigation(targetPageIndex) {
+  const page = currentPage();
+  const missing = firstUnansweredOnPage(page);
+  if (missing) {
+    state.active = missing;
+    markActive();
+    const block = document.querySelector(
+      `.question-block[data-item-id="${missing.itemId}"][data-answer-field="${missing.answerField}"]`,
+    );
+    block?.scrollIntoView({ behavior: "smooth", block: "center" });
+    els.statusText.textContent = `${state.annotatorId}: 이 페이지에 답변하지 않은 문항이 있습니다.`;
+    return;
+  }
+
+  els.prevPage.disabled = true;
+  els.nextPage.disabled = true;
+  els.statusText.textContent = `${state.annotatorId}: 현재 페이지 답변 10개를 저장하는 중입니다.`;
+  await postRecords(buildPageRecords(page));
+  state.pageIndex = targetPageIndex;
+  state.active = null;
+  render();
 }
 
 function questionBlocks() {
@@ -390,16 +472,16 @@ els.annotatorSelect.addEventListener("change", async () => {
   await loadAnnotator(annotator);
 });
 
-els.prevPage.addEventListener("click", () => {
-  state.pageIndex = Math.max(0, state.pageIndex - 1);
-  state.active = null;
-  render();
+els.prevPage.addEventListener("click", async () => {
+  const targetPageIndex = Math.max(0, state.pageIndex - 1);
+  if (targetPageIndex === state.pageIndex) return;
+  await syncCurrentPageBeforeNavigation(targetPageIndex);
 });
 
-els.nextPage.addEventListener("click", () => {
-  state.pageIndex = Math.min(state.pages.length - 1, state.pageIndex + 1);
-  state.active = null;
-  render();
+els.nextPage.addEventListener("click", async () => {
+  const targetPageIndex = Math.min(state.pages.length - 1, state.pageIndex + 1);
+  if (targetPageIndex === state.pageIndex) return;
+  await syncCurrentPageBeforeNavigation(targetPageIndex);
 });
 
 els.downloadCsv.addEventListener("click", downloadLocalCSV);
