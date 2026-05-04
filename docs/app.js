@@ -362,23 +362,8 @@ async function syncCurrentPageBeforeNavigation(targetPageIndex) {
   render();
 }
 
-function isTextInput(event) {
-  const tagName = event.target?.tagName;
-  return tagName === "TEXTAREA" || tagName === "INPUT" || tagName === "SELECT";
-}
-
 function questionBlocks() {
   return [...document.querySelectorAll(".question-block")];
-}
-
-function setActiveFromBlock(block) {
-  if (!block) return;
-  state.active = {
-    itemId: block.dataset.itemId,
-    answerField: block.dataset.answerField,
-  };
-  markActive();
-  block.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 function markActive() {
@@ -424,29 +409,12 @@ function advanceActive() {
     .slice(idx + 1)
     .find((block) => !getAnswer(block.dataset.itemId, block.dataset.answerField));
   if (next) {
-    setActiveFromBlock(next);
-  } else if (!firstUnansweredOnPage(currentPage())) {
-    els.statusText.textContent = `${state.annotatorId}: 이 페이지가 완료되었습니다. Enter 또는 다음 버튼으로 저장하고 넘어가세요.`;
+    state.active = {
+      itemId: next.dataset.itemId,
+      answerField: next.dataset.answerField,
+    };
+    markActive();
   }
-}
-
-function moveActive(delta) {
-  const blocks = questionBlocks();
-  if (!blocks.length) return;
-  const idx = state.active
-    ? blocks.findIndex(
-        (block) =>
-          block.dataset.itemId === state.active.itemId &&
-          block.dataset.answerField === state.active.answerField,
-      )
-    : -1;
-  const nextIdx = Math.max(0, Math.min(blocks.length - 1, idx + delta));
-  setActiveFromBlock(blocks[nextIdx]);
-}
-
-async function goToNextPageIfComplete() {
-  if (state.pageIndex >= state.pages.length - 1) return;
-  await syncCurrentPageBeforeNavigation(state.pageIndex + 1);
 }
 
 function downloadLocalCSV() {
@@ -519,36 +487,12 @@ els.nextPage.addEventListener("click", async () => {
 els.downloadCsv.addEventListener("click", downloadLocalCSV);
 
 document.addEventListener("keydown", async (event) => {
-  if (isTextInput(event)) return;
-
-  if (event.key === "ArrowUp") {
-    event.preventDefault();
-    moveActive(-1);
-    return;
-  }
-
-  if (event.key === "ArrowDown") {
-    event.preventDefault();
-    moveActive(1);
-    return;
-  }
-
-  if (event.key === "Enter") {
-    event.preventDefault();
-    await goToNextPageIfComplete();
-    return;
-  }
-
   const mapping = {
     ArrowLeft: "no",
+    ArrowDown: "ambiguous",
     ArrowRight: "yes",
-    " ": "ambiguous",
-    Spacebar: "ambiguous",
-    Digit2: "ambiguous",
-    Numpad2: "ambiguous",
-    2: "ambiguous",
   };
-  const value = mapping[event.key] || mapping[event.code];
+  const value = mapping[event.key];
   if (!value || !state.active) return;
   event.preventDefault();
   const task = currentPage().tasks.find((row) => row.item_id === state.active.itemId);
