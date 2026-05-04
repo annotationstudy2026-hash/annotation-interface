@@ -1,0 +1,630 @@
+[
+  {
+    "label": "Acropolis(아크로폴리스)",
+    "description": "아테네 언덕 위의 고대 그리스 신전 유적을 뜻하며, 기둥이 있는 석조 신전이나 파르테논 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "Alps(알프스)",
+    "description": "유럽의 높은 산맥을 뜻하며, 눈 덮인 봉우리, 알프스식 산악 풍경, 초원과 산장이 보이면 해당됩니다."
+  },
+  {
+    "label": "America(미국)",
+    "description": "미국을 떠올리게 하는 국기, 도시 풍경, 독립기념일 장식, 서부/도로 문화 같은 시각 단서가 보이면 해당됩니다."
+  },
+  {
+    "label": "Athens(아테네)",
+    "description": "그리스 수도 아테네를 뜻하며, 아크로폴리스, 고대 그리스 유적, 하얀 석조 건축물이 보이면 해당됩니다."
+  },
+  {
+    "label": "Bavaria(바이에른)",
+    "description": "독일 남부 지역을 뜻하며, 알프스 산지, 독일식 성, 전통 의상, 맥주 축제 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "Bay(만)",
+    "description": "육지 쪽으로 들어온 바다나 넓은 물가를 뜻하며, 항구, 해안선, 도시 옆 물길이 보이면 해당됩니다."
+  },
+  {
+    "label": "Belgium(벨기에)",
+    "description": "벨기에를 떠올리게 하는 유럽식 광장, 중세 건축, 초콜릿/맥주 문화 같은 시각 단서가 보이면 해당됩니다."
+  },
+  {
+    "label": "Blue Mosque(블루 모스크)",
+    "description": "이스탄불의 술탄아흐메트 모스크를 뜻하며, 큰 돔과 여러 개의 첨탑이 있는 푸른빛 이슬람 사원이 보이면 해당됩니다."
+  },
+  {
+    "label": "Cambodia(캄보디아)",
+    "description": "캄보디아를 떠올리게 하는 앙코르와트식 사원, 열대 유적, 동남아 사원 구조가 보이면 해당됩니다."
+  },
+  {
+    "label": "Caribbean(카리브해)",
+    "description": "카리브해 지역을 뜻하며, 맑은 바다, 열대 해변, 섬, 밝은 축제 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "Chilean Andes(칠레 안데스)",
+    "description": "칠레 쪽 안데스 산맥을 뜻하며, 건조한 고산 지대, 긴 산맥, 눈 덮인 봉우리가 보이면 해당됩니다."
+  },
+  {
+    "label": "Civil War(남북전쟁)",
+    "description": "미국 남북전쟁 시대를 뜻하며, 19세기 군복, 전장 재현, 대포, 깃발, 병사 행렬이 보이면 해당됩니다."
+  },
+  {
+    "label": "Day of the Dead(망자의 날)",
+    "description": "멕시코 기념일을 뜻하며, 해골 분장, 꽃 장식, 제단, 알록달록한 죽음 관련 축제 요소가 보이면 해당됩니다."
+  },
+  {
+    "label": "Denmark(덴마크)",
+    "description": "덴마크를 떠올리게 하는 북유럽식 거리, 항구, 바이킹 문화, 붉은색/흰색 국기 단서가 보이면 해당됩니다."
+  },
+  {
+    "label": "Fourth of July(미국 독립기념일)",
+    "description": "미국 독립기념일을 뜻하며, 성조기, 불꽃놀이, 퍼레이드, 빨강/하양/파랑 장식이 보이면 해당됩니다."
+  },
+  {
+    "label": "France(프랑스)",
+    "description": "프랑스를 떠올리게 하는 에펠탑, 파리 거리, 포도밭, 프랑스식 건축이나 카페가 보이면 해당됩니다."
+  },
+  {
+    "label": "Germany(독일)",
+    "description": "독일을 떠올리게 하는 성, 맥주 축제, 중부 유럽식 마을, 독일식 전통 건축이 보이면 해당됩니다."
+  },
+  {
+    "label": "Grand Canyon(그랜드 캐니언)",
+    "description": ""
+  },
+  {
+    "label": "Holi festival(홀리 축제)",
+    "description": "인도의 색가루 축제를 뜻하며, 사람들이 밝은 색 가루를 뿌리거나 온몸에 색이 묻은 장면이면 해당됩니다."
+  },
+  {
+    "label": "Hong Kong(홍콩)",
+    "description": "홍콩을 떠올리게 하는 고층 빌딩 스카이라인, 항구, 빽빽한 도시 야경이 보이면 해당됩니다."
+  },
+  {
+    "label": "India(인도)",
+    "description": "인도를 떠올리게 하는 사원, 전통 의상, 색채 강한 축제, 타지마할 같은 건축물이 보이면 해당됩니다."
+  },
+  {
+    "label": "Istanbul(이스탄불)",
+    "description": "튀르키예 이스탄불을 뜻하며, 돔과 첨탑이 있는 모스크, 보스포루스 해협, 중동/비잔틴식 도시 풍경이 보이면 해당됩니다."
+  },
+  {
+    "label": "London street(런던 거리)",
+    "description": "런던의 거리 풍경을 뜻하며, 영국식 건물, 붉은 버스, 검은 택시, 흐린 도시 거리 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "Matterhorn(마터호른)",
+    "description": "스위스 알프스의 뾰족한 산봉우리를 뜻하며, 삼각형처럼 날카롭게 솟은 눈 덮인 산이 보이면 해당됩니다."
+  },
+  {
+    "label": "Mexico(멕시코)",
+    "description": "멕시코를 떠올리게 하는 해골 축제, 선인장, 전통 문양, 화려한 거리 장식이 보이면 해당됩니다."
+  },
+  {
+    "label": "Middle East(중동)",
+    "description": "중동 지역을 떠올리게 하는 돔, 첨탑, 사막, 시장, 아랍/이슬람식 건축이 보이면 해당됩니다."
+  },
+  {
+    "label": "Netherlands(네덜란드)",
+    "description": "네덜란드를 떠올리게 하는 풍차, 튤립밭, 운하, 낮은 지대의 유럽식 풍경이 보이면 해당됩니다."
+  },
+  {
+    "label": "Norwegian village(노르웨이 마을)",
+    "description": "노르웨이식 마을을 뜻하며, 피오르드, 목조 주택, 북유럽 산악/해안 마을 풍경이 보이면 해당됩니다."
+  },
+  {
+    "label": "Oktoberfest(옥토버페스트)",
+    "description": "독일 맥주 축제를 뜻하며, 큰 맥주잔, 텐트, 전통 의상, 축제 인파가 보이면 해당됩니다."
+  },
+  {
+    "label": "Rio de Janeiro(리우데자네이루)",
+    "description": "브라질 도시 리우를 뜻하며, 해변, 산과 도시, 예수상, 삼바/카니발 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "Route 66(루트 66)",
+    "description": "미국의 상징적인 도로를 뜻하며, 사막 도로, 빈티지 자동차, 도로 표지판, 미국식 로드트립 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "San Francisco(샌프란시스코)",
+    "description": "샌프란시스코를 뜻하며, 골든게이트 브리지, 언덕길, 항구, 케이블카가 보이면 해당됩니다."
+  },
+  {
+    "label": "Singapore(싱가포르)",
+    "description": "싱가포르를 떠올리게 하는 현대적 고층 건물, 마리나 베이, 도시 정원, 깨끗한 항구 도시 풍경이 보이면 해당됩니다."
+  },
+  {
+    "label": "Spain(스페인)",
+    "description": "스페인을 떠올리게 하는 플라멩코, 투우장, 지중해식 거리, 붉고 노란 색감의 전통 요소가 보이면 해당됩니다."
+  },
+  {
+    "label": "Swiss chalet(스위스 샬레)",
+    "description": "스위스식 산장 주택을 뜻하며, 목조 발코니가 있는 알프스 산장이나 눈 덮인 산악 숙소가 보이면 해당됩니다."
+  },
+  {
+    "label": "Switzerland(스위스)",
+    "description": ""
+  },
+  {
+    "label": "Tuscany(토스카나)",
+    "description": "이탈리아 토스카나 지역을 뜻하며, 완만한 언덕, 포도밭, 사이프러스 나무, 돌로 된 마을이 보이면 해당됩니다."
+  },
+  {
+    "label": "Venetian(베네치아의)",
+    "description": "베네치아와 관련된 것을 뜻하며, 운하, 곤돌라, 물가의 유럽식 건물, 가면무도회 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "Viking festival(바이킹 축제)",
+    "description": "바이킹 문화를 재현한 축제를 뜻하며, 뿔 투구, 북유럽 복장, 나무 배, 중세식 행사 장면이 보이면 해당됩니다."
+  },
+  {
+    "label": "Viking ship(바이킹 배)",
+    "description": "긴 나무 선체와 장식된 뱃머리를 가진 북유럽 바이킹식 배가 보이면 해당됩니다."
+  },
+  {
+    "label": "Zen(선)",
+    "description": "선불교나 명상 분위기를 뜻하며, 돌 정원, 절제된 공간, 고요한 사원, 명상 자세가 보이면 해당됩니다."
+  },
+  {
+    "label": "abandoned(버려진 상태)",
+    "description": "관리되지 않고 낡거나 사람이 떠난 듯한 건물, 놀이공원, 거리, 물건이 보이면 해당됩니다."
+  },
+  {
+    "label": "acropolis(아크로폴리스)",
+    "description": "아테네 언덕 위의 고대 그리스 신전 유적을 뜻하며, 기둥이 있는 석조 신전이나 파르테논 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "amusement park(놀이공원)",
+    "description": ""
+  },
+  {
+    "label": "andy warhol(앤디 워홀)",
+    "description": "팝아트 화가로, 강한 색 대비, 반복 이미지, 상업 광고나 만화 같은 평면적 스타일이 보이면 해당됩니다."
+  },
+  {
+    "label": "apron(앞치마)",
+    "description": ""
+  },
+  {
+    "label": "aurora(오로라)",
+    "description": ""
+  },
+  {
+    "label": "bag(가방)",
+    "description": ""
+  },
+  {
+    "label": "barbie(바비)",
+    "description": "바비 인형이나 바비풍 캐릭터를 뜻하며, 금발 인형, 분홍색 패션, 장난감 인형 이미지가 보이면 해당됩니다."
+  },
+  {
+    "label": "batman(배트맨)",
+    "description": "검은 박쥐 로고, 가면 쓴 어두운 슈퍼히어로, 망토, 고담 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "battery charger(배터리 충전기)",
+    "description": "휴대용 보조배터리나 충전기처럼 전자기기를 충전하는 장치가 보이면 해당됩니다."
+  },
+  {
+    "label": "beer garden(비어가든)",
+    "description": "야외 테이블, 맥주잔, 사람들, 독일식 축제나 술집 정원 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "big ben(빅벤)",
+    "description": "런던의 시계탑을 뜻하며, 높은 고딕식 탑과 큰 시계판이 보이면 해당됩니다."
+  },
+  {
+    "label": "black panther(블랙 팬서)",
+    "description": "마블 캐릭터 블랙 팬서를 뜻하며, 검은 슈트, 고양잇과 마스크, 와칸다풍 요소가 보이면 해당됩니다."
+  },
+  {
+    "label": "brandenburg gate(브란덴부르크 문)",
+    "description": "베를린의 개선문형 건축물을 뜻하며, 여러 기둥과 위쪽의 말/전차 조각이 보이면 해당됩니다."
+  },
+  {
+    "label": "cabin(오두막)",
+    "description": "숲이나 산속의 작은 목조 집, 겨울 산장, 단순한 별장 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "camille pissarro(카미유 피사로)",
+    "description": "인상주의 화가로, 부드러운 빛, 점묘에 가까운 붓질, 농촌이나 거리 풍경 느낌이 보이면 해당됩니다."
+  },
+  {
+    "label": "carnival(카니발)",
+    "description": "퍼레이드, 화려한 의상, 축제 인파, 장식 차량, 음악과 춤의 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "carry-all pouch(캐리올 파우치)",
+    "description": "작은 물건을 넣는 납작한 파우치나 지퍼 달린 휴대용 주머니가 보이면 해당됩니다."
+  },
+  {
+    "label": "castle(성)",
+    "description": ""
+  },
+  {
+    "label": "chateau(프랑스식 성)",
+    "description": "프랑스식 저택이나 성을 뜻하며, 장식적인 지붕, 정원, 유럽 궁전 같은 건물이 보이면 해당됩니다."
+  },
+  {
+    "label": "chocolate shop(초콜릿 가게)",
+    "description": ""
+  },
+  {
+    "label": "claude monet(클로드 모네)",
+    "description": "인상주의 화가로, 부드러운 빛과 색, 수련, 정원, 흐릿한 붓질의 풍경화 느낌이 보이면 해당됩니다."
+  },
+  {
+    "label": "clock(시계)",
+    "description": ""
+  },
+  {
+    "label": "coffee mug(커피 머그컵)",
+    "description": ""
+  },
+  {
+    "label": "colosseum(콜로세움)",
+    "description": "로마의 원형 경기장을 뜻하며, 둥근 타원형 석조 건축과 반복되는 아치가 보이면 해당됩니다."
+  },
+  {
+    "label": "curtain(커튼)",
+    "description": ""
+  },
+  {
+    "label": "desert(사막)",
+    "description": ""
+  },
+  {
+    "label": "diner(다이너)",
+    "description": "미국식 식당을 뜻하며, 카운터, 네온사인, 부스 좌석, 복고풍 식당 내부가 보이면 해당됩니다."
+  },
+  {
+    "label": "edgar degas(에드가 드가)",
+    "description": "발레 무용수와 실내 장면을 자주 그린 화가로, 파스텔 색감과 무용수 느낌이 보이면 해당됩니다."
+  },
+  {
+    "label": "eiffel tower(에펠탑)",
+    "description": ""
+  },
+  {
+    "label": "empire state building(엠파이어 스테이트 빌딩)",
+    "description": "뉴욕의 마천루를 뜻하며, 계단식 꼭대기와 뾰족한 안테나가 있는 높은 빌딩이 보이면 해당됩니다."
+  },
+  {
+    "label": "evening(저녁)",
+    "description": ""
+  },
+  {
+    "label": "flamenco(플라멩코)",
+    "description": "스페인 전통 춤을 뜻하며, 붉은 드레스, 손동작, 춤추는 자세, 기타 연주가 보이면 해당됩니다."
+  },
+  {
+    "label": "floating islands(떠 있는 섬)",
+    "description": ""
+  },
+  {
+    "label": "fog(안개)",
+    "description": ""
+  },
+  {
+    "label": "gears(톱니바퀴)",
+    "description": ""
+  },
+  {
+    "label": "goku(손오공)",
+    "description": "드래곤볼 캐릭터 손오공을 뜻하며, 뾰족한 머리, 주황색 도복, 에너지 효과가 보이면 해당됩니다."
+  },
+  {
+    "label": "golden gate bridge(골든게이트 브리지)",
+    "description": "샌프란시스코의 붉은 현수교를 뜻하며, 두 개의 큰 주탑과 긴 케이블 다리가 보이면 해당됩니다."
+  },
+  {
+    "label": "grand canyon(그랜드 캐니언)",
+    "description": ""
+  },
+  {
+    "label": "great wall of china(만리장성)",
+    "description": "산등성이를 따라 길게 이어지는 중국의 성벽 구조가 보이면 해당됩니다."
+  },
+  {
+    "label": "gustav klimt(구스타프 클림트)",
+    "description": "금색 장식, 화려한 패턴, 상징적인 인물화 느낌이 강한 화풍이면 해당됩니다."
+  },
+  {
+    "label": "hagia sophia(아야 소피아)",
+    "description": "이스탄불의 대형 돔 건축물을 뜻하며, 큰 중앙 돔과 첨탑이 있는 비잔틴/이슬람식 건물이 보이면 해당됩니다."
+  },
+  {
+    "label": "halloween(핼러윈)",
+    "description": "호박, 유령, 마녀, 검은색/주황색 장식, 괴기스러운 축제 분위기가 보이면 해당됩니다."
+  },
+  {
+    "label": "hello kitty(헬로키티)",
+    "description": ""
+  },
+  {
+    "label": "hill(언덕)",
+    "description": ""
+  },
+  {
+    "label": "hilltown(언덕 마을)",
+    "description": ""
+  },
+  {
+    "label": "hokusai(호쿠사이)",
+    "description": "일본 우키요에 화가로, 선명한 윤곽선, 평면적 색면, 파도나 후지산 같은 일본 판화 느낌이면 해당됩니다."
+  },
+  {
+    "label": "hot air balloon(열기구)",
+    "description": "큰 풍선 아래 바구니가 달린 비행체가 하늘에 떠 있으면 해당됩니다."
+  },
+  {
+    "label": "iron man(아이언맨)",
+    "description": ""
+  },
+  {
+    "label": "jazz club(재즈 클럽)",
+    "description": ""
+  },
+  {
+    "label": "jungle(정글)",
+    "description": ""
+  },
+  {
+    "label": "kandinsky(칸딘스키)",
+    "description": "추상화 화가로, 원, 선, 기하학적 형태, 강한 색 조합이 비구상적으로 배치되어 있으면 해당됩니다."
+  },
+  {
+    "label": "kremlin(크렘린)",
+    "description": "모스크바의 요새형 건축군을 뜻하며, 붉은 성벽, 탑, 러시아식 돔 건축이 보이면 해당됩니다."
+  },
+  {
+    "label": "lake(호수)",
+    "description": ""
+  },
+  {
+    "label": "lamp(램프)",
+    "description": "빛을 내는 조명기구, 스탠드, 등불, 가로등 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "landscape(풍경)",
+    "description": ""
+  },
+  {
+    "label": "lavender field(라벤더밭)",
+    "description": ""
+  },
+  {
+    "label": "leonid afremov(레오니드 아프레모프)",
+    "description": "강한 색채와 두꺼운 붓질, 비 오는 거리나 빛 반사가 많은 인상적인 화풍이면 해당됩니다."
+  },
+  {
+    "label": "magnet(자석)",
+    "description": "냉장고 자석이나 작은 장식용 자석처럼 붙이는 물건, 또는 자석 상품 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "magnets(자석)",
+    "description": ""
+  },
+  {
+    "label": "masquerade ball(가면무도회)",
+    "description": "가면을 쓴 사람들이 격식 있는 의상으로 춤추는 무도회 장면이면 해당됩니다."
+  },
+  {
+    "label": "mickey mouse(미키마우스)",
+    "description": ""
+  },
+  {
+    "label": "minions(미니언즈)",
+    "description": "작은 노란색 캐릭터, 고글, 파란 작업복이 보이면 해당됩니다."
+  },
+  {
+    "label": "monet(모네)",
+    "description": "클로드 모네의 화풍을 뜻하며, 부드러운 빛, 흐릿한 붓질, 수련이나 정원 느낌이 보이면 해당됩니다."
+  },
+  {
+    "label": "mountains(산)",
+    "description": ""
+  },
+  {
+    "label": "mouse pad(마우스 패드)",
+    "description": ""
+  },
+  {
+    "label": "mug(머그컵)",
+    "description": ""
+  },
+  {
+    "label": "naruto(나루토)",
+    "description": "애니메이션 나루토 캐릭터를 뜻하며, 닌자 머리띠, 주황색 복장, 뾰족한 금발 머리가 보이면 해당됩니다."
+  },
+  {
+    "label": "necklace(목걸이)",
+    "description": ""
+  },
+  {
+    "label": "neuschwanstein castle(노이슈반슈타인 성)",
+    "description": "독일의 동화 같은 흰색 성을 뜻하며, 높은 탑과 산속 성 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "notebook(노트/공책)",
+    "description": ""
+  },
+  {
+    "label": "pierre-auguste renoir(피에르 오귀스트 르누아르)",
+    "description": "인상주의 화가로, 따뜻한 색감, 부드러운 인물 표현, 밝은 야외/실내 장면이면 해당됩니다."
+  },
+  {
+    "label": "pirate ship(해적선)",
+    "description": "돛, 해골 깃발, 오래된 목조 배, 바다 위 모험선 같은 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "pouch(파우치)",
+    "description": "작은 물건을 담는 지퍼 달린 주머니나 납작한 휴대용 가방이 보이면 해당됩니다."
+  },
+  {
+    "label": "pyramid(피라미드)",
+    "description": ""
+  },
+  {
+    "label": "race(경주)",
+    "description": ""
+  },
+  {
+    "label": "rainbow(무지개)",
+    "description": ""
+  },
+  {
+    "label": "rapunzel(라푼젤)",
+    "description": "긴 금발 머리의 동화/디즈니 공주 캐릭터가 보이면 해당됩니다."
+  },
+  {
+    "label": "reenactment(재현 행사)",
+    "description": "역사적 사건을 의상과 장비로 다시 연기하는 행사 장면이면 해당됩니다."
+  },
+  {
+    "label": "rembrandt(렘브란트)",
+    "description": "강한 명암 대비, 어두운 배경, 따뜻한 빛으로 인물을 강조하는 고전 회화 느낌이면 해당됩니다."
+  },
+  {
+    "label": "rock garden(돌 정원)",
+    "description": "돌, 자갈, 모래 무늬가 중심인 정원, 특히 일본식/선식 정원 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "sand dunes(모래 언덕)",
+    "description": ""
+  },
+  {
+    "label": "seas(바다)",
+    "description": ""
+  },
+  {
+    "label": "simpson(심슨)",
+    "description": "노란 피부의 심슨 가족 캐릭터나 그와 유사한 만화 스타일이 보이면 해당됩니다."
+  },
+  {
+    "label": "skyline(스카이라인)",
+    "description": "도시의 고층 건물들이 하늘을 배경으로 만든 윤곽선이나 전경이 보이면 해당됩니다."
+  },
+  {
+    "label": "sleeves(슬리브)",
+    "description": "(물체 등의) 보호 커버 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "snowy forest(눈 덮인 숲)",
+    "description": ""
+  },
+  {
+    "label": "souk(중동 시장)",
+    "description": "중동식 재래시장을 뜻하며, 좁은 골목, 천막, 향신료, 물건이 빽빽한 시장이 보이면 해당됩니다."
+  },
+  {
+    "label": "spider-man(스파이더맨)",
+    "description": ""
+  },
+  {
+    "label": "spiral notebook(스프링 노트)",
+    "description": "가장자리에 금속 또는 플라스틱 스프링이 있는 노트가 보이면 해당됩니다."
+  },
+  {
+    "label": "steampunk city(스팀펑크 도시)",
+    "description": "증기기관, 톱니바퀴, 황동색 기계, 빅토리아풍 건물이 섞인 가상 도시가 보이면 해당됩니다."
+  },
+  {
+    "label": "sunset(일몰)",
+    "description": ""
+  },
+  {
+    "label": "superman(슈퍼맨)",
+    "description": ""
+  },
+  {
+    "label": "sweatshirt(스웨트셔츠)",
+    "description": "두꺼운 면 소재의 긴팔 상의나 후드 없는 캐주얼 상의가 보이면 해당됩니다."
+  },
+  {
+    "label": "t-shirt(티셔츠)",
+    "description": ""
+  },
+  {
+    "label": "taj mahal(타지마할)",
+    "description": "인도의 흰 대리석 묘역 건축물을 뜻하며, 중앙 돔 및 첨탑이 보이면 해당됩니다."
+  },
+  {
+    "label": "tattoo(문신)",
+    "description": ""
+  },
+  {
+    "label": "temple(사원)",
+    "description": "종교적 건축물, 제단, 탑, 신전, 불교/힌두/고대 양식의 예배 공간이 보이면 해당됩니다."
+  },
+  {
+    "label": "tie(넥타이)",
+    "description": ""
+  },
+  {
+    "label": "times square(타임스 스퀘어)",
+    "description": ""
+  },
+  {
+    "label": "titian(티치아노)",
+    "description": "르네상스 화가로, 풍부한 색감, 고전적 인물 구성, 따뜻한 붉은색/황금색 회화 느낌이면 해당됩니다."
+  },
+  {
+    "label": "tote bag(토트백)",
+    "description": "손잡이가 달린 천 가방이나 쇼핑백 형태가 보이면 해당됩니다."
+  },
+  {
+    "label": "tower bridge(타워 브리지)",
+    "description": "런던의 다리를 뜻하며, 두 개의 고딕식 탑과 그 사이를 잇는 다리 구조가 보이면 해당됩니다."
+  },
+  {
+    "label": "train station(기차역)",
+    "description": ""
+  },
+  {
+    "label": "tulip field(튤립밭)",
+    "description": ""
+  },
+  {
+    "label": "tulips(튤립)",
+    "description": ""
+  },
+  {
+    "label": "umbrella(우산)",
+    "description": ""
+  },
+  {
+    "label": "van gogh(반 고흐)",
+    "description": ""
+  },
+  {
+    "label": "vermeer(베르메르)",
+    "description": "고요한 실내 장면, 부드러운 창문 빛, 사실적인 인물과 섬세한 색감이 보이면 해당됩니다."
+  },
+  {
+    "label": "view(전망)",
+    "description": ""
+  },
+  {
+    "label": "village(마을)",
+    "description": ""
+  },
+  {
+    "label": "vineyard(포도밭)",
+    "description": ""
+  },
+  {
+    "label": "wallet(지갑)",
+    "description": ""
+  },
+  {
+    "label": "wildflower meadow(야생화 초원)",
+    "description": ""
+  },
+  {
+    "label": "windmill(풍차)",
+    "description": "큰 날개가 달린 풍차 건물이나 바람으로 도는 구조물이 보이면 해당됩니다."
+  },
+  {
+    "label": "wonder woman(원더우먼)",
+    "description": "여성 슈퍼히어로 캐릭터로, 붉은/금색 갑옷, 왕관, 올가미, 별 문양이 보이면 해당됩니다."
+  }
+]

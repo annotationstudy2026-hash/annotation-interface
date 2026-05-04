@@ -5,6 +5,7 @@ const state = {
   pageIndex: 0,
   responses: new Map(),
   comments: new Map(),
+  conceptDescriptions: new Map(),
   active: null,
 };
 
@@ -63,8 +64,42 @@ async function fetchJson(url) {
   return await res.json();
 }
 
+async function fetchOptionalJson(url) {
+  try {
+    return await fetchJson(url);
+  } catch (error) {
+    console.warn(`Optional data not loaded: ${url}`, error);
+    return null;
+  }
+}
+
+function normalizeConceptKey(label) {
+  return String(label || "").trim().toLowerCase();
+}
+
+function setConceptDescriptions(data) {
+  state.conceptDescriptions.clear();
+  if (Array.isArray(data)) {
+    for (const entry of data) {
+      if (!entry || !entry.label || !entry.description) continue;
+      state.conceptDescriptions.set(
+        normalizeConceptKey(entry.label),
+        String(entry.description).trim(),
+      );
+    }
+    return;
+  }
+  if (data && typeof data === "object") {
+    for (const [label, description] of Object.entries(data)) {
+      if (!description) continue;
+      state.conceptDescriptions.set(normalizeConceptKey(label), String(description).trim());
+    }
+  }
+}
+
 async function init() {
   state.manifest = await fetchJson("./data/manifest.json");
+  setConceptDescriptions(await fetchOptionalJson("./data/concept_descriptions.json"));
   els.annotatorSelect.innerHTML = "";
   for (const annotator of state.manifest.annotators) {
     const option = document.createElement("option");
@@ -184,6 +219,53 @@ function renderTaskCard(task) {
   return card;
 }
 
+function extractConceptLabel(questionText) {
+  const match = questionText.match(/([A-Za-z0-9][^()]*?)\(([^()]+)\)/);
+  if (!match) return null;
+  return {
+    english: match[1].trim(),
+    korean: match[2].trim(),
+  };
+}
+
+function buildQuestionHint(answerField, questionText) {
+  const label = extractConceptLabel(questionText);
+  if (!label) return "";
+
+  const conceptLabel = `${label.english}(${label.korean})`;
+  const description = state.conceptDescriptions.get(normalizeConceptKey(conceptLabel));
+  if (!description) return "";
+  return `* ${conceptLabel}: ${description}`;
+}
+
+function renderQuestionText(questionText) {
+  const q = document.createElement("div");
+  q.className = "question";
+
+  const label = extractConceptLabel(questionText);
+  if (!label) {
+    q.textContent = questionText;
+    return q;
+  }
+
+  const conceptLabel = `${label.english}(${label.korean})`;
+  const start = questionText.indexOf(conceptLabel);
+  if (start < 0) {
+    q.textContent = questionText;
+    return q;
+  }
+
+  const before = questionText.slice(0, start);
+  const after = questionText.slice(start + conceptLabel.length);
+  q.append(document.createTextNode(before));
+
+  const strong = document.createElement("strong");
+  strong.className = "concept-label";
+  strong.textContent = conceptLabel;
+  q.append(strong, document.createTextNode(after));
+  return q;
+}
+
 function renderQuestionBlock(task, answerField, questionText) {
   const block = document.createElement("div");
   block.className = "question-block";
@@ -194,10 +276,15 @@ function renderQuestionBlock(task, answerField, questionText) {
     markActive();
   });
 
-  const q = document.createElement("div");
-  q.className = "question";
-  q.textContent = questionText;
-  block.append(q);
+  block.append(renderQuestionText(questionText));
+
+  const hintText = buildQuestionHint(answerField, questionText);
+  if (hintText) {
+    const hint = document.createElement("div");
+    hint.className = "question-hint";
+    hint.textContent = hintText;
+    block.append(hint);
+  }
 
   const row = document.createElement("div");
   row.className = "answer-row";
