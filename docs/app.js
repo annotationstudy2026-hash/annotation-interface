@@ -4,7 +4,6 @@ const state = {
   pages: [],
   pageIndex: 0,
   responses: new Map(),
-  comments: new Map(),
   conceptDescriptions: new Map(),
   active: null,
 };
@@ -42,10 +41,6 @@ function responseKey(itemId, answerField) {
 
 function storageKey(itemId, answerField) {
   return `${storagePrefix()}:${itemId}:${answerField}`;
-}
-
-function commentStorageKey(itemId) {
-  return `${storagePrefix()}:${itemId}:comment`;
 }
 
 function getAnswer(itemId, answerField) {
@@ -120,7 +115,6 @@ async function loadAnnotator(annotatorId) {
   state.annotatorId = annotatorId;
   state.pageIndex = 0;
   state.responses.clear();
-  state.comments.clear();
   state.active = null;
 
   const data = await fetchJson(`./data/${annotatorId}.json`);
@@ -138,9 +132,11 @@ function loadLocalResponses() {
     if (!raw) continue;
     try {
       const payload = JSON.parse(raw);
-      if (payload.question_type === "comment") {
-        state.comments.set(payload.item_id, payload.answer || "");
-      } else if (payload.item_id && payload.answer_field && payload.answer) {
+      if (
+        payload.item_id &&
+        ["question_1_answer", "question_2_answer"].includes(payload.answer_field) &&
+        payload.answer
+      ) {
         setAnswer(payload.item_id, payload.answer_field, payload.answer);
       }
     } catch {
@@ -213,7 +209,6 @@ function renderTaskCard(task) {
   body.append(
     renderQuestionBlock(task, "question_1_answer", task.question_1_target),
     renderQuestionBlock(task, "question_2_answer", task.question_2_non_matching),
-    renderComment(task),
   );
   card.append(body);
   return card;
@@ -309,24 +304,6 @@ function renderQuestionBlock(task, answerField, questionText) {
   return block;
 }
 
-function renderComment(task) {
-  const textarea = document.createElement("textarea");
-  textarea.placeholder = "comment";
-  textarea.value = state.comments.get(task.item_id) || "";
-  textarea.addEventListener("change", () => {
-    state.comments.set(task.item_id, textarea.value);
-    saveLocalPayload({
-      item_id: task.item_id,
-      question_type: "comment",
-      answer: textarea.value,
-      answer_field: "comment",
-      page_index: state.pageIndex + 1,
-      task_order: task.task_order,
-    });
-  });
-  return textarea;
-}
-
 async function saveAnswer(task, answerField, value) {
   setAnswer(task.item_id, answerField, value);
   saveLocalPayload({
@@ -352,11 +329,7 @@ function buildPayload(payload) {
 
 function saveLocalPayload(payload) {
   const fullPayload = buildPayload(payload);
-
-  const key =
-    fullPayload.question_type === "comment"
-      ? commentStorageKey(fullPayload.item_id)
-      : storageKey(fullPayload.item_id, fullPayload.answer_field);
+  const key = storageKey(fullPayload.item_id, fullPayload.answer_field);
   localStorage.setItem(key, JSON.stringify(fullPayload));
 }
 
@@ -370,19 +343,6 @@ function buildPageRecords(page) {
           question_type: questionTypes[answerField],
           answer_field: answerField,
           answer: getAnswer(task.item_id, answerField),
-          page_index: state.pageIndex + 1,
-          task_order: task.task_order,
-        }),
-      );
-    }
-    const comment = state.comments.get(task.item_id);
-    if (comment) {
-      records.push(
-        buildPayload({
-          item_id: task.item_id,
-          question_type: "comment",
-          answer_field: "comment",
-          answer: comment,
           page_index: state.pageIndex + 1,
           task_order: task.task_order,
         }),
@@ -522,6 +482,9 @@ function downloadLocalCSV() {
     if (!key || !key.startsWith(prefix)) continue;
     try {
       const payload = JSON.parse(localStorage.getItem(key));
+      if (!["question_1_answer", "question_2_answer"].includes(payload.answer_field)) {
+        continue;
+      }
       rows.push([
         payload.study_id || "",
         payload.annotator_id || "",

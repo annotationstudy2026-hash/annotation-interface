@@ -55,8 +55,7 @@ p {
 }
 
 select,
-button,
-textarea {
+button {
   font: inherit;
 }
 
@@ -205,16 +204,6 @@ main {
   background: #e4f7ea;
   color: var(--yes);
   font-weight: 700;
-}
-
-textarea {
-  width: 100%;
-  min-height: 44px;
-  margin-top: 8px;
-  padding: 6px;
-  resize: vertical;
-  border: 1px solid var(--line);
-  font-size: 12px;
 }
 
 .footer {
