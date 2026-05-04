@@ -37,4 +37,18 @@ https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annot
 https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_08
 https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_09
 https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_10
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_11
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_12
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_13
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_14
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_15
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_16
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_17
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_18
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_19
+https://annotationstudy2026-hash.github.io/annotation-interface/?annotator=annotator_20
 ```
+
+`annotator_11` receives the same items as `annotator_01`, `annotator_12` receives
+the same items as `annotator_02`, and so on through `annotator_20` /
+`annotator_10`.

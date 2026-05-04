@@ -11,10 +11,21 @@
     "annotator_07",
     "annotator_08",
     "annotator_09",
-    "annotator_10"
+    "annotator_10",
+    "annotator_11",
+    "annotator_12",
+    "annotator_13",
+    "annotator_14",
+    "annotator_15",
+    "annotator_16",
+    "annotator_17",
+    "annotator_18",
+    "annotator_19",
+    "annotator_20"
   ],
   "num_images": 300,
   "tasks_per_annotator": 150,
   "questions_per_task": 2,
-  "page_size": 5
+  "page_size": 5,
+  "duplicated_assignment_rule": "annotator_11 matches annotator_01, ..., annotator_20 matches annotator_10"
 }
