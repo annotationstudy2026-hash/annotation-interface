@@ -1,0 +1,20 @@
+{
+  "study_id": "image_annotation_2026",
+  "generated_at": "2026-05-04T04:32:11.529423+00:00",
+  "annotators": [
+    "annotator_01",
+    "annotator_02",
+    "annotator_03",
+    "annotator_04",
+    "annotator_05",
+    "annotator_06",
+    "annotator_07",
+    "annotator_08",
+    "annotator_09",
+    "annotator_10"
+  ],
+  "num_images": 300,
+  "tasks_per_annotator": 150,
+  "questions_per_task": 2,
+  "page_size": 5
+}
